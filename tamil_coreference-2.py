@@ -22,18 +22,18 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # Set up your API key
-# Replace 'YOUR_API_KEY' with your actual Gemini API key
-GEMINI_API_KEY = "AIzaSyD4dxXY78p58XjOaloTW0r6bLq92eQOOkc"  # Get this from Google AI Studio
+
+GEMINI_API_KEY = "YOUR_GEMINI_API_KEY"  # Get this from Google AI Studio
 os.environ['GEMINI_API_KEY'] = GEMINI_API_KEY
 
-# For Colab, you can use the secrets feature or set it directly
-API_KEY = "AIzaSyD4dxXY78p58XjOaloTW0r6bLq92eQOOkc"  # Replace with your actual API key
+
+API_KEY = "GEMINI_API_KEY = "YOUR_GEMINI_API_KEY"  # Replace with your actual API key
 os.environ['GOOGLE_API_KEY'] = API_KEY
 
 # Initialize the Gemini client
 client = genai.Client(api_key=API_KEY)
 
-print("✅ Libraries imported and API client initialized")
+print("Libraries imported and API client initialized")
 
 # Cell 2: Define Pydantic models for structured output
 class Mention(BaseModel):
@@ -359,7 +359,7 @@ def analyze_tamil_coreference(tamil_text: str, show_visualizations: bool = True)
         result = resolver.resolve_coreferences(tamil_text)
 
         if result.clusters:
-            print(f"✅ Found {len(result.clusters)} coreference clusters!")
+            print(f" Found {len(result.clusters)} coreference clusters!")
 
             # Step 3: Display results
             if show_visualizations:
@@ -369,19 +369,19 @@ def analyze_tamil_coreference(tamil_text: str, show_visualizations: bool = True)
                 visualizer.create_arc_visualization(result)
                 visualizer.create_interactive_visualization(result)
         else:
-            print("❌ No coreference clusters detected.")
+            print(" No coreference clusters detected.")
 
         return result
 
     except Exception as e:
-        print(f"❌ Error during analysis: {e}")
+        print(f"Error during analysis: {e}")
         return None
 
 print("Main analysis function ready!")
 
 sample_tamil_text = "ராம் ஒரு மாணவன். அவன் தனது வீட்டை விட்டு கிளம்பினான். சீதா ஒரு ஆசிரியை. அவள் அவன் தன்னை கண்ட போது."
 
-print("🚀 Testing Tamil Coreference Resolution System")
+print(" Testing Tamil Coreference Resolution System")
 print("=" * 50)
 
 # Run the complete analysis
@@ -390,7 +390,7 @@ result = analyze_tamil_coreference(sample_tamil_text)
 def interactive_demo():
     """Interactive demo for custom Tamil text input"""
 
-    print("🎯 INTERACTIVE TAMIL COREFERENCE DEMO")
+    print(" INTERACTIVE TAMIL COREFERENCE DEMO")
     print("=" * 50)
     print("Enter your Tamil text below, or press Enter to use default example:")
     print("Default: ராம் ஒரு மாணவன். அவன் தனது வீட்டை விட்டு கிளம்பினான்.")
@@ -411,7 +411,7 @@ def save_results_to_file(result: CoreferenceResult, filename: str = "tamil_coref
             json.dump(result.dict(), f, ensure_ascii=False, indent=2)
         print(f"📁 Results saved to {filename}")
     else:
-        print("❌ No results to save")
+        print("No results to save")
 
 # Function to load and analyze from file
 def analyze_from_file(filepath: str):
@@ -424,10 +424,10 @@ def analyze_from_file(filepath: str):
         return analyze_tamil_coreference(text)
 
     except FileNotFoundError:
-        print(f"❌ File {filepath} not found")
+        print(f" File {filepath} not found")
         return None
     except Exception as e:
-        print(f"❌ Error reading file: {e}")
+        print(f"Error reading file: {e}")
         return None
 
 def create_network_visualization(result: CoreferenceResult):
@@ -714,12 +714,12 @@ if final_result and final_result.clusters:
 #                 st.session_state.analysis_result = result
 # 
 #                 if result.clusters:
-#                     st.success(f"✅ Analysis complete! Found {len(result.clusters)} coreference clusters.")
+#                     st.success(f"Analysis complete! Found {len(result.clusters)} coreference clusters.")
 #                 else:
-#                     st.warning("⚠️ No coreference clusters detected in the text.")
+#                     st.warning(" No coreference clusters detected in the text.")
 # 
 #     with col2:
-#         st.subheader("📊 Quick Stats")
+#         st.subheader(" Quick Stats")
 #         if st.session_state.analysis_result:
 #             result = st.session_state.analysis_result
 # 
@@ -745,10 +745,10 @@ if final_result and final_result.clusters:
 # def display_results(result: CoreferenceResult):
 #     """Display analysis results with visualizations"""
 # 
-#     st.header("📈 Analysis Results")
+#     st.header(" Analysis Results")
 # 
 #     # Word mapping display
-#     with st.expander("🔢 Word-to-Number Mapping", expanded=False):
+#     with st.expander("Word-to-Number Mapping", expanded=False):
 #         word_mapping = st.session_state.processor.word_to_number
 # 
 #         # Create mapping dataframe
@@ -801,10 +801,10 @@ if final_result and final_result.clusters:
 # 
 #     # Visualizations
 #     st.markdown("---")
-#     st.header("📊 Visualizations")
+#     st.header(" Visualizations")
 # 
 #     # Tabs for different visualizations
-#     tab1, tab2, tab3, tab4 = st.tabs(["📊 Word Distribution", "🌐 Arc Visualization", "🕸️ Network Graph", "📈 Cluster Analysis"])
+#     tab1, tab2, tab3, tab4 = st.tabs([" Word Distribution", " Arc Visualization", " Network Graph", " Cluster Analysis"])
 # 
 #     with tab1:
 #         create_word_distribution_chart(result)
